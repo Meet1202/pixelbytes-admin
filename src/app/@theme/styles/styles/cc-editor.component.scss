@@ -1,0 +1,37 @@
+.text-toolbar-container{
+  height: 0 !important;
+  background-color: red !important;
+}
+
+.close-toolbar{
+  height: 0 !important;
+  transition: 1s;
+  .angular-editor-toolbar-set button#bold-remark{
+    display: none !important;
+
+  }
+}
+
+.open-toolbar{
+  height: 40px !important;
+  transition: 1s;
+  .angular-editor-toolbar-set button#bold-remark{
+    display: block !important;
+  }
+}
+
+button.active{
+  background: var(--first-color) !important;
+}
+
+.angular-editor-textarea{
+  background-color: var(--default-white-color) !important;
+  &:focus-visible, &:focus{
+    // border:2px solid var(--default-active-input-border) !important;
+    outline:1px solid var(--default-active-input-border) !important;
+  }
+}
+
+.input-error-border .angular-editor-textarea{
+  outline:1px solid var(--default-input-error-border-color) !important;
+}

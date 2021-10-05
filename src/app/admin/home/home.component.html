@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-between">
+  <h3>{{ 'ADMIN.HOME.LABEL.HOME' | translate}}</h3>
+  <pb-button
+    [formGroup]="myForm"
+    [fieldMeta]="updateBtnField"
+    (btnClicked)="update($event)"
+  ></pb-button>
+</div>
+<hr/>
+<div class="row">
+  <form class="col-sm-6">
+    <pb-input-text
+      [formGroup]="myForm"
+      [fieldMeta]="companyNameField"
+      [value]="companyNameField.value"
+      (blur)="onChangeTermsAndCondition($event)"
+    ></pb-input-text>
+
+    <pb-input-text
+      [formGroup]="myForm"
+      [fieldMeta]="logoField"
+      (change)="chooseLogoFile($event)"
+      [value]="logoField.value"
+    ></pb-input-text>
+
+    <pb-editor
+      [formGroup]="myForm"
+      [fieldMeta]="termAndConditionField"
+      [value]="termAndConditionField.value"
+      (blur)="onChangeTermsAndCondition($event)"
+    ></pb-editor>
+
+    <pb-input-text
+      [formGroup]="myForm"
+      [fieldMeta]="bannerImageField"
+      [value]="bannerImageField.value"
+      (change)="chooseBannerFile($event)"
+    ></pb-input-text>
+  </form>
+  <div class="col-sm-6">
+    <p>{{'ADMIN.HOME.LABEL.LOGO' | translate}}</p>
+    <img [src]="logo" class="grid-img-100">
+
+    <p class="m-t-xlg">{{'ADMIN.HOME.LABEL.BANNER_IMAGE' | translate}}</p>
+    <img [src]="bannerImage" class="grid-img-100">
+  </div>
+</div>

@@ -1,0 +1,102 @@
+{
+  "COMMON": {
+    "LABEL": {
+      "LIGHT": "Light",
+      "DARK": "Dark",
+      "COSMIC": "Cosmic",
+      "CORPORATE": "Corporate",
+      "UPDATE": "Update",
+      "EMAIL": "Email",
+      "ADD": "Add",
+      "EDIT": "Edit",
+      "REMOVE": "Remove",
+      "ACTION": "Action",
+      "SR_NO":"Sr.No",
+      "DESCRIPTION": "Description",
+      "LOGO": "Logo",
+      "PHONE": "Phone",
+      "VIEW": "View"
+    },
+    "MESSAGE": {
+      "FIELD_REQUIRED": "This Field is required."
+    }
+  },
+  "ADMIN": {
+    "NAVBAR": {
+      "LABEL": {
+        "PROFILE": "Profile",
+        "LOGOUT": "Logout"
+      }
+    },
+    "HOME": {
+      "LABEL": {
+        "HOME": "Home",
+        "COMPANY_NAME": "Company Name",
+        "UPLOAD_LOGO": "Upload Logo",
+        "TERMS_AND_CONDITIONS": "Terms & Conditions",
+        "UPLOAD_BANNER_IMAGE": "Upload Banner Image",
+        "BANNER_IMAGE": "Banner Image",
+        "LOGO": "Logo"
+      },
+      "MESSAGE": {}
+    },
+    "CONTACT": {
+      "LABEL": {
+        "CONTACT": "Contact",
+        "PHONE": "Phone",
+        "SOCIAL_LINKS": "Social Links",
+        "FACEBOOK": "Facebook",
+        "WHATSAPP": "Whatsapp",
+        "INSTAGRAM": "Instagram"
+      }
+    },
+    "CATEGORY": {
+      "LABEL": {
+        "CATEGORIES": "Categories",
+        "CATEGORIES_LIST": "Categories List",
+        "CATEGORY": "Category",
+        "ITEMS_LIST": "Item List",
+        "SELECT_CATEGORY": "Select Category",
+        "SELECT_SUB_CATEGORY": "Select Sub Category",
+        "ITEM_IMAGES": "Item Images",
+        "SUB_CATEGORY": "Sub Category"
+      },
+      "MESSAGE": {
+        "REMOVE_MESSAGE_OF_CATEGORY": "Are you sure you want to remove this category.",
+        "REMOVE_MESSAGE_OF_ITEM_IMAGE": "Are you sure you want to remove this item image."
+      }
+    },
+    "ENQUIRY": {
+      "LABEL": {
+        "ENQUIRY_LIST": "Enquiry List",
+        "PHONE": "Phone",
+        "MESSAGE": "Message"
+      },
+      "MESSAGE": {
+        "REMOVE_MESSAGE_OF_ENQUIRY": "Are you sure you want to remove Enquiry from this {{EMAIL}} email."
+      }
+    },
+    "SUBSCRIPTION": {
+      "LABEL": {
+        "SUBSCRIPTION": "Subscription",
+        "MANAGE_SUBSCRIPTION": "Manage Subscription",
+        "SELECT_TERM": "Select Term",
+        "MONTHLY": "Monthly",
+        "YEARLY": "Yearly",
+        "PRICE": "Price"
+      }
+    },
+    "USER": {
+      "LABEL": {
+        "USER_LIST": "User List",
+        "USER_ID": "User ID",
+        "ROLE": "Role",
+        "BUSINESS_NAME": "Business Name",
+        "ADDRESS": "Address",
+        "TAGLINE": "Tagline",
+        "WEBSITE": "Website",
+        "DETAILS": "Details"
+      }
+    }
+  }
+}

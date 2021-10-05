@@ -1,0 +1,25 @@
+<div *ngIf="fieldMeta && fieldMeta.fieldName" class="form-group {{cssClassName}}" [formGroup]="formGroup">
+  <div>
+    <label *ngIf="fieldMeta.displayLabel != ''" [class]="fieldMeta.labelClass">{{fieldMeta.displayLabel}}
+    </label>
+    <a *ngIf="displayLink && isLinkLabelVisible" href="{{linkUrl}}" target="_blank" style="margin-left: 230px">Link</a>
+  </div>
+  <input
+    class="form-control {{fieldMeta.type == 'file' ? 'file-input' : ''}} {{getErrorBorderClass()}}"
+    [formControlName]="fieldMeta.fieldName"
+    [name]="fieldMeta.fieldName"
+    nbInput
+    fieldSize = "{{fieldMeta.fieldSize}}"
+    [id]="fieldMeta.fieldName"
+    [ngClass]="fieldMeta.inputClass || ''"
+    [type]="fieldMeta.type || ''"
+    [placeholder]="fieldMeta.placeholder"
+    [value]="fieldMeta.value || value || ''"
+    [multiple]="fieldMeta.isMultipleFieldUpload"
+    (blur)="onBlur($event)"
+  />
+  <span class="text-danger" *ngIf="(isBlur || formGroup.controls[fieldMeta.fieldName].touched)
+        && formGroup.controls[fieldMeta.fieldName].invalid">
+          {{getErrorMessage()}}
+        </span>
+</div>

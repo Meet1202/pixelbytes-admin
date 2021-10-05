@@ -1,0 +1,42 @@
+<div class="p-lg-3">
+  <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between">
+      <h5>{{isEditMode ? 'Edit User' : 'Add User'}}</h5>
+    </div>
+    <div class="d-flex justify-content-between">
+      <pb-button
+        [formGroup]="myForm"
+        [fieldMeta]="manageField"
+        (btnClicked)="manageUser($event)"
+      ></pb-button>
+    </div>
+  </div>
+
+  <hr/>
+
+  <form class="manage-user">
+    <pb-input-text
+      [formGroup]="myForm"
+      [fieldMeta]="emailField"
+      [value]="emailField.value"
+    ></pb-input-text>
+
+    <pb-input-text
+      [formGroup]="myForm"
+      [fieldMeta]="phoneField"
+      [value]="phoneField.value"
+    ></pb-input-text>
+
+    <div *ngIf="!isEditMode">
+      <pb-input-text
+        [formGroup]="myForm"
+        [fieldMeta]="passwordField"
+        [value]="passwordField.value"
+      ></pb-input-text>
+
+      <nb-checkbox (change)="togglePasswordFun($event)">Show Password</nb-checkbox>
+    </div>
+
+  </form>
+
+</div>

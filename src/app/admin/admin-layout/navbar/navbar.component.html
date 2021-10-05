@@ -1,0 +1,32 @@
+<div class="header-container">
+  <div class="logo-container">
+    <a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+      <nb-icon icon="menu-2-outline"></nb-icon>
+    </a>
+    <a class="logo" href="#" (click)="navigateHome()">{{companyName}}</a>
+  </div>
+<!--  <nb-select [selected]="currentTheme" (selectedChange)="changeTheme($event)" status="primary">-->
+<!--    <nb-option *ngFor="let theme of themes" [value]="theme.value"> {{ theme.name }}</nb-option>-->
+<!--  </nb-select>-->
+</div>
+
+<div class="header-container">
+  <div>
+    <span class="header_img"
+          [popper]="popperContentRef"
+          [popperTrigger]="'click'"
+          [popperHideOnClickOutside]="true"
+          [popperHideOnScroll]="true"
+          [popperPlacement]="'bottom'">
+    <img src="https://i.imgur.com/hczKIze.jpg" alt=""/>
+  </span>
+    <popper-content #popperContentRef>
+      <div>
+        <a class="dropdown-item">{{userName}}</a>
+        <hr/>
+        <a class="dropdown-item cursor-pointer" href="/#/admin/profile" (click)="popperContentRef.hide()">{{'ADMIN.NAVBAR.LABEL.PROFILE' | translate}}</a>
+        <a class="dropdown-item cursor-pointer">{{'ADMIN.NAVBAR.LABEL.LOGOUT' | translate}}</a>
+      </div>
+    </popper-content>
+  </div>
+</div>

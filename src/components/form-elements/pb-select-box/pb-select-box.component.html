@@ -1,0 +1,22 @@
+<div *ngIf="fieldMeta && fieldMeta.fieldName && !!dropdownSettings" class="form-group {{cssClassName}}" [formGroup]="formGroup">
+  <label *ngIf="fieldMeta.displayLabel != ''" [class]="fieldMeta.labelClass">{{fieldMeta.displayLabel}}</label>
+  <form [formGroup]="formGroup">
+    <ng-multiselect-dropdown
+      class="{{getErrorBorderClass()}} w-100"
+      #multiSelectComponent
+      id="{{fieldMeta.fieldName}}"
+      [settings]="dropdownSettings"
+      [placeholder]="fieldMeta.placeholder"
+      [data]="fieldMeta.options"
+      formControlName="{{fieldMeta.fieldName}}"
+      (click)="onOpenDropDownList($event)"
+      (ngModelChange)="onChange($event)"
+      (onDropDownClose)="onDropDownClose($event)"
+      (blur)="onBlur($event)"
+      (onSelect)="onItemSelect($event)">
+    </ng-multiselect-dropdown>
+  </form>
+  <span class="text-danger" *ngIf="(isBlur || formGroup.controls[fieldMeta.fieldName].touched) && formGroup.controls[fieldMeta.fieldName].invalid">
+    {{getErrorMessage()}}
+  </span>
+</div>

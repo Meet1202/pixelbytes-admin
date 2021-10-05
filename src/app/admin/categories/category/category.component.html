@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-between">
+  <h3>{{ 'ADMIN.CATEGORY.LABEL.CATEGORIES_LIST' | translate}}</h3>
+</div>
+<hr/>
+<div class="d-flex justify-content-start">
+  <pb-input-text
+    [formGroup]="myForm"
+    [fieldMeta]="categoryField"
+    [value]="categoryField.value"
+    class="m-r-xlg"
+  ></pb-input-text>
+
+  <pb-button
+    [formGroup]="myForm"
+    [fieldMeta]="addBtnField"
+    (btnClicked)="add($event)"
+    class="m-t-xlg"
+  ></pb-button>
+</div>
+
+<ag-grid-angular
+  class="ag-theme-material aggrid-size"
+  [rowData]="rowData"
+  [columnDefs]="columnDef"
+  [gridOptions]="gridOptions"
+  [frameworkComponents]="frameworkComponents"
+>
+</ag-grid-angular>

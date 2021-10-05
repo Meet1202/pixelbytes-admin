@@ -1,0 +1,11 @@
+<div class="p-4">
+<!--  <h2>{{confirmTitle}}</h2>-->
+  <div>
+    {{confirmMessage}}
+  </div>
+
+  <div class="float-right m-b-md">
+    <button nbButton size="sm" (click)="cancelDialog()">{{cancelBtnText}}</button>
+    <button nbButton size="sm" status="danger" class="m-l-sm" (click)="confirmDialog()">{{okBtnText}}</button>
+  </div>
+</div>

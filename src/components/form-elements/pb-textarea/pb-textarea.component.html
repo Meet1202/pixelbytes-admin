@@ -1,0 +1,17 @@
+<div *ngIf="fieldMeta && fieldMeta.fieldName" class="form-group {{cssClassName}}" [formGroup]="formGroup">
+  <label *ngIf="fieldMeta.displayLabel != ''" [class]="fieldMeta.labelClass">{{fieldMeta.displayLabel}}</label>
+  <textarea
+    class="form-control {{getErrorBorderClass()}}"
+    [formControlName]="fieldMeta.fieldName"
+    [name]="fieldMeta.fieldName"
+    [id]="fieldMeta.fieldName"
+    nbInput
+    fieldSize = "{{fieldMeta.fieldSize}}"
+    [ngClass]="fieldMeta.inputClass || ''"
+    [placeholder]="fieldMeta.placeholder"
+    [value]="fieldMeta.value || value || ''"
+    (blur)="onBlur($event)"></textarea>
+  <span class="text-danger" *ngIf="(isBlur || formGroup.controls[fieldMeta.fieldName].touched) && formGroup.controls[fieldMeta.fieldName].invalid">
+          {{getErrorMessage()}}
+        </span>
+</div>

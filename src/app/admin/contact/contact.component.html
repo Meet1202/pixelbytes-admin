@@ -1,0 +1,61 @@
+<div class="d-flex justify-content-between">
+  <h3> {{'ADMIN.CONTACT.LABEL.CONTACT' | translate}} </h3>
+  <pb-button
+    [formGroup]="myForm"
+    [fieldMeta]="updateBtnField"
+    (btnClicked)="update($event)"
+  ></pb-button>
+</div>
+<hr/>
+
+<form>
+  <div class="row">
+    <div class="col">
+      <pb-input-text
+        [formGroup]="myForm"
+        [fieldMeta]="emailField"
+        [value]="emailField.value"
+      ></pb-input-text>
+    </div>
+    <div class="col">
+      <pb-input-text
+        [formGroup]="myForm"
+        [fieldMeta]="phoneField"
+        [value]="phoneField.value"
+      ></pb-input-text>
+    </div>
+  </div>
+
+  <h5 class="m-t-xlg">{{'ADMIN.CONTACT.LABEL.SOCIAL_LINKS' | translate}}</h5>
+
+  <div class="row">
+    <div class="col">
+      <pb-input-text
+        [formGroup]="myForm"
+        [fieldMeta]="facebookField"
+        [value]="facebookField.value"
+        [displayLink]="true"
+      ></pb-input-text>
+    </div>
+    <div class="col">
+      <pb-input-text
+        [formGroup]="myForm"
+        [fieldMeta]="whatsappField"
+        [value]="whatsappField.value"
+      ></pb-input-text>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <pb-input-text
+        [formGroup]="myForm"
+        [fieldMeta]="instaField"
+        [value]="instaField.value"
+        [displayLink]="true"
+      ></pb-input-text>
+    </div>
+    <div class="col">
+
+    </div>
+  </div>
+</form>

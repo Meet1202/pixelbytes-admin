@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-start">
+    <a (click)="goBack()" [tooltip]='"Go Back"' placement="bottom"><i class="fas fa-arrow-left fa-lg m-t-lg m-r-lg"></i></a>
+    <h3> {{'ADMIN.SUBSCRIPTION.LABEL.MANAGE_SUBSCRIPTION' | translate}} </h3>
+  </div>
+  <pb-button
+    [formGroup]="myForm"
+    [fieldMeta]="addEditField"
+    (btnClicked)="addEdit($event)"
+  ></pb-button>
+</div>
+<hr/>
+
+<div class="row">
+  <div class="col-sm-6">
+    <pb-select-box
+      class="col-sm-4"
+      [formGroup]="myForm"
+      [fieldMeta]="termField"
+      [value]="termField.value"
+      (blur)="setPreviewData($event)"
+    ></pb-select-box>
+    <pb-editor
+      [formGroup]="myForm"
+      [fieldMeta]="descriptionField"
+      [value]="descriptionField.value"
+      (blur)="setPreviewData($event)"
+    ></pb-editor>
+    <pb-input-text
+      [formGroup]="myForm"
+      [fieldMeta]="priceField"
+      [value]="priceField.value"
+      (blur)="setPreviewData($event)"
+    ></pb-input-text>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <p>{{term}}</p>
+          <p><span>&#8377;</span> {{price}}</p>
+        </div>
+        <div class="card-text description"></div>
+      </div>
+    </div>
+  </div>
+</div>

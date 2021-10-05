@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-between">
+  <h3>{{ 'ADMIN.SUBSCRIPTION.LABEL.SUBSCRIPTION' | translate}}</h3>
+  <button class="btn btn-fill btn-primary btn-xs m-t-sm" routerLink="/admin/subscription/manage">{{ 'COMMON.LABEL.ADD' | translate }}</button>
+</div>
+<hr/>
+<div class="row">
+  <div class="card col-sm-4 m-lg-3" *ngFor="let subscription of subscriptions">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <p>{{subscription.term}}</p>
+        <p><span>&#8377;</span> {{subscription.price}}</p>
+      </div>
+      <p class="card-text">{{subscription.description}}</p>
+      <div class="card-footer d-flex justify-content-center">
+        <pb-button
+          [formGroup]="myForm"
+          [fieldMeta]="editBtnField"
+          (btnClicked)="onEdit($event, subscription)"
+          class="m-r-lg"
+        ></pb-button>
+        <pb-button
+          [formGroup]="myForm"
+          [fieldMeta]="removeBtnField"
+          (btnClicked)="onRemove($event)"
+        ></pb-button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div *ngIf="fieldMeta && fieldMeta.fieldName" class="form-group {{cssClassName}}" [formGroup]="formGroup">
+  <label *ngIf="fieldMeta.displayLabel != ''" [class]="fieldMeta.labelClass">{{fieldMeta.displayLabel}}</label>
+
+  <angular-editor
+    class="{{getErrorBorderClass()}}"
+    [config]="editorConfig"
+    [formControlName]="fieldMeta.fieldName"
+    [id]="fieldMeta.fieldName"
+    [ngClass]="fieldMeta.inputClass || ''"
+    [placeholder]="fieldMeta.placeholder"
+    (keyup) = "onBlur($event)"
+  ></angular-editor>
+  <span class="text-danger" *ngIf="(isBlur || formGroup.controls[fieldMeta.fieldName].touched)
+        && formGroup.controls[fieldMeta.fieldName].invalid">
+          {{getErrorMessage()}}
+        </span>
+</div>

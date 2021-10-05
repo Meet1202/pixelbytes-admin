@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-between">
+  <h3> {{'ADMIN.USER.LABEL.USER_LIST' | translate}} </h3>
+  <pb-button
+    [formGroup]="myForm"
+    [fieldMeta]="addBtnField"
+    (btnClicked)="addUser($event)"
+  ></pb-button>
+</div>
+<hr/>
+
+<ag-grid-angular
+  class="ag-theme-material aggrid-size"
+  [rowData]="rowData"
+  [columnDefs]="columnDef"
+  [gridOptions]="gridOptions"
+  [frameworkComponents]="frameworkComponents"
+>
+</ag-grid-angular>

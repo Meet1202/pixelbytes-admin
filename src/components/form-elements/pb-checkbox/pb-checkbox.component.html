@@ -1,0 +1,33 @@
+<div *ngIf="fieldMeta && fieldMeta.fieldName" class="form-group {{cssClassName}}" [formGroup]="formGroup">
+  <div *ngIf="fieldMeta.options && fieldMeta.options.length > 0">
+    <div class="flex-container" *ngFor="let option of fieldMeta.options">
+      <label [class]="fieldMeta.labelClass">
+        <input
+          class="flex-container  align-center multi-checkbox"
+          [ngClass]="fieldMeta.inputClass || ''"
+          [type]="'checkbox'"
+          [value]="option.value"
+          (blur)="onBlur($event)"
+          [checked]="option.selected"
+          (change)="onChange($event, option)">
+        <span  *ngIf="option.label != ''" [class]="fieldMeta.labelClass">{{option.label}}</span>
+      </label>
+    </div>
+  </div>
+  <div class="flex-container" *ngIf="!fieldMeta.options || (fieldMeta.options && fieldMeta.options.length == 1)">
+    <label [class]="fieldMeta.labelClass">
+      <input
+        class="flex-container  align-center multi-checkbox"
+        [ngClass]="fieldMeta.inputClass || ''"
+        [type]="'checkbox'"
+        [value]="fieldMeta.value"
+        (blur)="onBlur($event)"
+        [checked]="fieldMeta.value"
+        (change)="onChange($event, fieldMeta)">
+      <span  *ngIf="fieldMeta.displayLabel != ''" [class]="fieldMeta.labelClass">{{fieldMeta.displayLabel}}</span>
+    </label>
+  </div>
+  <span class="text-danger" *ngIf="formGroup && formGroup.controls && formGroup.controls[fieldMeta.fieldName] && (formGroup.controls[fieldMeta.fieldName].touched) && formGroup.controls[fieldMeta.fieldName].invalid">
+          {{getErrorMessage()}}
+        </span>
+</div>

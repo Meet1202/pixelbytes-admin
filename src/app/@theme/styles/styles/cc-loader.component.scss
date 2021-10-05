@@ -1,0 +1,26 @@
+$cc-loader-bg-color: #3aa5a0 !default;
+.cc-loader-lg {
+  font-size: 20px !important;
+  width: 50px !important;
+  height: 50px !important;
+}
+.cc-loader-md {
+  font-size: 15px !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.cc-loader-sm {
+  font-size: 12px !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.cc-module-loader-color {
+  color: $cc-loader-bg-color !important;
+}
+
+.module-loader {
+  height: 500px !important;
+  padding-top: 250px !important;
+}

@@ -1,0 +1,21 @@
+<div *ngIf="fieldMeta">
+  <button class="{{fieldMeta.class}}"
+          type="{{fieldMeta.type}}"
+          name="{{fieldMeta.fieldName}}"
+          [status] = "fieldMeta.status"
+          [disabled]="fieldMeta.disable"
+          (click)="onClick($event)"
+          nbButton
+          id="{{fieldMeta.fieldName}}">
+    <div>
+			<span>
+				<i *ngIf="fieldMeta.iconCssClass" class="{{fieldMeta.iconCssClass}}"></i> {{fieldMeta.btnText}}
+			</span>
+
+      <span *ngIf="fieldMeta.showLoading" class="spinner-border spinner-border-sm ml-2" role="status"
+            aria-hidden="true"></span>
+
+      <span *ngIf="fieldMeta.showCompleted" class="ml-2"><i class="fas fa-check"></i></span>
+    </div>
+  </button>
+</div>
