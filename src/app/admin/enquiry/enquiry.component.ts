@@ -8,6 +8,8 @@ import {CommonService} from "../../../services/common-service/common.service";
 import {PBConfirmPromptComponent} from "../../../components/form-elements/pb-confirm-prompt/pb-confirm-prompt.component";
 import {TranslateService} from "@ngx-translate/core";
 import {DropDownRenderer} from "../../../components/renderers/drop-down-renderer";
+import {FormGroup} from "@angular/forms";
+import {PBInputText} from "../../../components/form-elements/field-classes/pb-input-text";
 
 @Component({
   selector: 'ngx-enquiry',
@@ -16,6 +18,8 @@ import {DropDownRenderer} from "../../../components/renderers/drop-down-renderer
 })
 export class EnquiryComponent extends BaseList implements OnInit {
 
+  myForm: FormGroup;
+  searchField: PBInputText;
   frameworkComponents: any;
 
   constructor(
@@ -26,6 +30,7 @@ export class EnquiryComponent extends BaseList implements OnInit {
     private translate: TranslateService
   ) {
     super(notificationService, changeRef);
+    this.myForm = new FormGroup({});
     this.frameworkComponents = {
       buttonRenderer: ButtonRendererComponent,
       dropDownRenderer: DropDownRenderer,
@@ -35,6 +40,14 @@ export class EnquiryComponent extends BaseList implements OnInit {
   ngOnInit(): void {
     super.ngOnInit();
     this.gridOptions.rowHeight = 48;
+    this.makeSearchField();
+  }
+
+  makeSearchField() {
+    this.searchField = new PBInputText({
+      fieldName: 'search',
+      placeholder: this.translate.instant('COMMON.LABEL.SEARCH'),
+    });
   }
 
   prepareColumnDef() {
@@ -44,7 +57,7 @@ export class EnquiryComponent extends BaseList implements OnInit {
       {headerName: this.translate.instant('COMMON.LABEL.EMAIL'), field: 'email'},
       {headerName: this.translate.instant('ADMIN.ENQUIRY.LABEL.MESSAGE'), field: 'message'},
       {
-        headerName: 'Status',
+        headerName: this.translate.instant('ADMIN.ENQUIRY.LABEL.STATUS'),
         field: 'status',
         minWidth: 200,
         cellRenderer: 'dropDownRenderer',

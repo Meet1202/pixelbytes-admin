@@ -15,11 +15,13 @@ import {CommonService} from "../../../../services/common-service/common.service"
 export class ManageUserComponent implements OnInit {
 
   @Input() isEditMode: boolean = false;
+  @Input() user: any;
   myForm: FormGroup;
   manageField: PBButton;
   emailField: PBInputText;
   passwordField: PBInputText;
   phoneField: PBInputText;
+  cancelBtnField: PBButton;
   constructor(
     private changeRef: ChangeDetectorRef,
     private translate: TranslateService,
@@ -31,7 +33,6 @@ export class ManageUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.makeFields();
-    console.log(this.isEditMode)
     this.detectChange();
   }
 
@@ -40,12 +41,16 @@ export class ManageUserComponent implements OnInit {
     this.makeEmailField();
     this.makePasswordField();
     this.makePhoneField();
+    this.makeCancelBtnField();
+    if (this.user) {
+      this.setFormValues();
+    }
   }
 
   makeManageField() {
     this.manageField = new PBButton({
       fieldName: 'add_edit_user',
-      btnText: this.isEditMode ? 'Edit User' : 'Add User',
+      btnText: this.isEditMode ? this.translate.instant('COMMON.LABEL.UPDATE') : this.translate.instant('COMMON.LABEL.SAVE'),
       class: 'btn-xs'
     });
   }
@@ -60,7 +65,7 @@ export class ManageUserComponent implements OnInit {
   makePasswordField() {
     this.passwordField = new PBInputText({
       fieldName: 'password',
-      displayLabel: 'Password',
+      displayLabel: this.translate.instant('AUTH.LABEL.PASSWORD'),
       type: 'password'
     });
   }
@@ -72,8 +77,28 @@ export class ManageUserComponent implements OnInit {
     });
   }
 
+  makeCancelBtnField() {
+    this.cancelBtnField = new PBButton({
+      fieldName: 'Cancel',
+      btnText: this.translate.instant('COMMON.LABEL.CANCEL'),
+      status: 'btn-light',
+      class: 'btn-xs'
+    });
+  }
+
   manageUser(event) {
+    if (this.user) {
+      this.user.email[0] = this.myForm.value.email;
+      this.user.phone[0] = this.myForm.value.phone;
+      this.closeDialog(this.user);
+    } else {
       this.closeDialog(this.myForm.value);
+    }
+  }
+
+  setFormValues() {
+    this.phoneField.value = this.user.phone[0];
+    this.emailField.value = this.user.email[0];
   }
 
   togglePasswordFun(event) {

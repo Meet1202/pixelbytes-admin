@@ -1,0 +1,25 @@
+<div class="d-flex justify-content-center signin">
+  <form>
+    <h1 class="text-center">{{'AUTH.LABEL.SIGN_IN' | translate}}</h1>
+    <pb-input-text
+      [formGroup]="myForm"
+      [fieldMeta]="emailField"
+      [value]="emailField.value"
+    ></pb-input-text>
+
+    <pb-input-text
+      [formGroup]="myForm"
+      [fieldMeta]="passwordField"
+      [value]="passwordField.value"
+    ></pb-input-text>
+
+    <div class="d-flex justify-content-between">
+      <pb-button
+        [formGroup]="myForm"
+        [fieldMeta]="signInBtn"
+        (btnClicked)="signIn($event)"
+      ></pb-button>
+      <button class="btn btn-xs btn-light" routerLink = '/admin/reset-password'>{{'AUTH.LABEL.RESET_PASSWORD' | translate}}</button>
+    </div>
+  </form>
+</div>

@@ -13,71 +13,77 @@
   </div>
 </div>
 
-<div class="m-t-xlg bg-light p-md-3 rounded shadow">
-  <div class="row">
-    <div class="col-6">
+<div class="row">
+  <div class="card col">
+    <div class="card-body">
       <div class="text-center">
         <img src="{{user.logo}}" style="height: 200px; border-radius: 50%;">
         <h4>{{user.customer_name}}</h4>
       </div>
-      <div class="row m-b-md">
-        <div class="col-4">
+      <div class="row">
+        <div class="col-3">
           Business Name:
         </div>
-        <div class="col-6">
+        <div class="col-8">
           {{user.business_name}}
         </div>
       </div>
-      <div class="row m-b-md">
-        <div class="col-4">
+      <div class="row">
+        <div class="col-3">
           Phone:
         </div>
-        <div class="col-6">
-          <div *ngFor="let phone of user.phone">{{phone}}</div>
+        <div class="col-8">
+          <p *ngFor="let phone of user.phone">{{phone}}</p>
         </div>
       </div>
-      <div class="row m-b-md">
-        <div class="col-4">
+      <div class="row">
+        <div class="col-3">
           Email:
         </div>
-        <div class="col-6">
-          <div *ngFor="let email of user.email">{{email}}</div>
+        <div class="col-8">
+          <p *ngFor="let email of user.email">{{email}}</p>
         </div>
       </div>
-      <div class="row m-b-md">
-        <div class="col-4">
+      <div class="row">
+        <div class="col-3">
           Address:
         </div>
-        <div class="col-6">
-          <div *ngFor="let address of user.address">{{address}}</div>
+        <div class="col-8">
+          <p *ngFor="let address of user.address; index as i"> {{i + 1}}) {{ address }}</p>
         </div>
       </div>
-      <div class="row m-b-md">
-        <div class="col-4">
+
+      <div class="row">
+        <div class="col-3">
           Tagline:
         </div>
-        <div class="col-6">
+        <div class="col-8">
           {{user.tagline}}
         </div>
       </div>
-      <div class="row m-b-md">
-        <div class="col-4">
+
+      <div class="row">
+        <div class="col-3">
           Package:
         </div>
-        <div class="col-6">
+        <div class="col-8">
           {{user.package_start_date}} {{user.term}}
         </div>
       </div>
-        <div class="row">
-          <div class="col-4">
-            Website:
-          </div>
-          <div class="col-6">
-            {{user.website}}
-          </div>
+
+      <div class="row">
+        <div class="col-3">
+          Website:
         </div>
+        <div class="col-8">
+          {{user.website}}
+        </div>
+      </div>
     </div>
-    <div class="col-6">
+  </div>
+
+  <div class="card col">
+    <div class="card-body">
       <p>Frames Section</p>
       <div class="d-flex justify-content-between">
         <pb-input-text
@@ -97,7 +103,7 @@
       <div *ngFor="let frame of user.frames; index as i">
         <div class="d-flex justify-content-lg-start">
           <span>{{i + 1}}) &nbsp;</span>
-          <img src="{{frame}}" class="m-b-lg" style="height: 200px; width: 80%"/>
+          <img src="{{frame}}" class="m-b-lg" style="height: 200px; width: 70%; margin-right: -50px"/>
           <pb-button
             [formGroup]="myForm"
             class="m-t-xlg"

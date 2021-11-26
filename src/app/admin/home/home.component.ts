@@ -5,6 +5,8 @@ import {TranslateService} from "@ngx-translate/core";
 import {PBEditor} from "../../../components/form-elements/field-classes/pb-editor";
 import {PBButton} from "../../../components/form-elements/field-classes/pb-button";
 import {FormService} from "../../../services/form-service/form.service";
+import {SharedService} from "../../../services/shared-service/shared.service";
+import {Route, Router} from "@angular/router";
 
 @Component({
   selector: 'ngx-home',
@@ -26,7 +28,13 @@ export class HomeComponent implements OnInit {
   constructor(
     private changeRef: ChangeDetectorRef,
     private translate: TranslateService,
-    private formService: FormService) {
+    private formService: FormService,
+    private router: Router,
+    private sharedService: SharedService) {
+    const loggedIn = localStorage.getItem('loggedIn')
+    if (!loggedIn) {
+      this.router.navigate(['/admin/signin']);
+    }
     this.myForm = new FormGroup({});
   }
 
@@ -55,7 +63,7 @@ export class HomeComponent implements OnInit {
     this.logoField = new PBInputText({
       fieldName: 'logo',
       type: 'file',
-      displayLabel: this.translate.instant('ADMIN.HOME.LABEL.UPLOAD_LOGO'),
+      displayLabel: this.translate.instant('ADMIN.HOME.LABEL.UPLOAD_LOGO')
     });
   }
 
@@ -104,7 +112,9 @@ export class HomeComponent implements OnInit {
   }
 
   onChangeTermsAndCondition(event) {
-    console.log(event);
+    if (event.fieldName == 'company_name') {
+      this.sharedService.productName.next(event.formControl.value);
+    }
   }
 
   getDetails() {
@@ -128,7 +138,8 @@ export class HomeComponent implements OnInit {
 
   update(event) {
     this.formService.showButtonLoader(event, this.changeRef);
-    console.log('hiii')
+    this.myForm.value['logo'] = this.logo;
+    this.myForm.value['banner_image'] = this.bannerImage;
     console.log(this.myForm.value);
     setTimeout(() => {
       this.formService.hideButtonLoader(event, this.changeRef);

@@ -1,19 +1,18 @@
 <div class="d-flex justify-content-between">
-  <h3> {{'ADMIN.USER.LABEL.USER_LIST' | translate}} </h3>
+  <h3>{{ 'ADMIN.CATEGORY.LABEL.ITEMS_LIST' | translate}}</h3>
 </div>
 <hr/>
-
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between m-b-md">
   <pb-input-text
     [formGroup]="myForm"
     [fieldMeta]="searchField"
     [value]="searchField.value"
+    class="m-r-xlg"
   ></pb-input-text>
-
   <pb-button
     [formGroup]="myForm"
     [fieldMeta]="addBtnField"
-    (btnClicked)="addUser($event)"
+    (btnClicked)="add($event)"
   ></pb-button>
 </div>
 

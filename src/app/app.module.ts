@@ -24,6 +24,7 @@ import {PBFormsModule} from "../components/pb-forms.module";
 import {TranslateModule} from "@ngx-translate/core";
 import {NgxPopperModule} from "ngx-popper";
 import {TooltipModule, TooltipOptions} from "ng2-tooltip-directive";
+import {TagInputModule} from "ngx-chips";
 
 const MyDefaultTooltipOptions: TooltipOptions = {
   'show-delay': 10,
@@ -53,6 +54,7 @@ const MyDefaultTooltipOptions: TooltipOptions = {
     PBFormsModule,
     NgxPopperModule.forRoot({}),
     TooltipModule.forRoot(MyDefaultTooltipOptions as TooltipOptions),
+    TagInputModule
   ],
   bootstrap: [AppComponent],
 })

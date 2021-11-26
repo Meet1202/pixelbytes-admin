@@ -21,6 +21,7 @@ export class SubCategoryComponent extends BaseList implements OnInit {
   myForm: FormGroup;
   subCategoryField: PBInputText;
   addBtnField: PBButton;
+  searchField: PBInputText;
   frameworkComponents: any;
   constructor(
     private translate: TranslateService,
@@ -45,6 +46,7 @@ export class SubCategoryComponent extends BaseList implements OnInit {
   makeFields() {
     this.makeCategoryField();
     this.makeAddBtnField();
+    this.makeSearchField();
   }
 
   makeCategoryField() {
@@ -67,7 +69,16 @@ export class SubCategoryComponent extends BaseList implements OnInit {
     });
   }
 
-  add(event) {}
+  makeSearchField() {
+    this.searchField = new PBInputText({
+      fieldName: 'search',
+      placeholder: this.translate.instant('COMMON.LABEL.SEARCH'),
+    });
+  }
+
+  add(event) {
+    console.log(this.myForm.value);
+  }
 
   prepareColumnDef() {
     this.columnDef = [

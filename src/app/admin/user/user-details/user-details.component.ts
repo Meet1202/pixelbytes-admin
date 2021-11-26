@@ -85,7 +85,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   editUser(event) {
-    this.commonService.openDialog(ManageUserComponent, {}, {isEditMode: true}).then((response) => {
+    this.commonService.openDialog(ManageUserComponent, {}, {isEditMode: true, user: this.user}).then((response) => {
       console.log(response);
     });
   }
@@ -110,7 +110,7 @@ export class UserDetailsComponent implements OnInit {
       email: ['abcz@gmail.com', 'abcz@gmail.com', 'abcz@gmail.com'],
       package_start_date: '23-4-2021',
       term: "MONTHLY",
-      address: ['afwewegerergafwewegerergafwewegerergafweweafwewegerergafwewegerergafwewegerergafweweafwewegerergafwewegerergafwewegerergafwewe'],
+      address: ['afwewegerergafwewegerergafwewegerergafweweafwewegerergafwewegerergafwewegerergafweweafwewegerergafwewegerergafwewegerergafwewe', 'afwewegerergafwewegerergafwewegerergafweweafwewegerergafwewegerergafwewegerergafweweafwewegerergafwewegerergafwewegerergafwewe'],
       tagline: 'efgerhrhr',
       website: 'abc.com',
       is_package_enable: true,

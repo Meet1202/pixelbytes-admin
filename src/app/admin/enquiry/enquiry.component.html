@@ -2,6 +2,13 @@
   <h3> {{'ADMIN.ENQUIRY.LABEL.ENQUIRY_LIST' | translate}} </h3>
 </div>
 <hr/>
+<pb-input-text
+  [formGroup]="myForm"
+  [fieldMeta]="searchField"
+  [value]="searchField.value"
+  class="m-t-lg"
+></pb-input-text>
+
 <ag-grid-angular
   class="ag-theme-material aggrid-size"
   [rowData]="rowData"

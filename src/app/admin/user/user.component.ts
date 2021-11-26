@@ -13,6 +13,7 @@ import {LogoViewerComponent} from "./logo-viewer/logo-viewer.component";
 import {Router} from "@angular/router";
 import {DropDownRenderer} from "../../../components/renderers/drop-down-renderer";
 import {ManageUserComponent} from "./manage-user/manage-user.component";
+import {PBInputText} from "../../../components/form-elements/field-classes/pb-input-text";
 
 @Component({
   selector: 'ngx-user',
@@ -23,7 +24,9 @@ export class UserComponent extends BaseList implements OnInit {
 
   myForm: FormGroup;
   addBtnField: PBButton;
+  searchField: PBInputText;
   frameworkComponents: any;
+
   constructor(
     private translate: TranslateService,
     private formService: FormService,
@@ -33,6 +36,7 @@ export class UserComponent extends BaseList implements OnInit {
     notificationService: NotificationService
   ) {
     super(notificationService, changeRef);
+    this.myForm = new FormGroup({});
     this.frameworkComponents = {
       buttonRenderer: ButtonRendererComponent,
       dropDownRenderer: DropDownRenderer,
@@ -53,6 +57,10 @@ export class UserComponent extends BaseList implements OnInit {
       class: 'btn-xs',
       iconCssClass: 'fas fa-plus'
     });
+    this.searchField = new PBInputText({
+      fieldName: 'search',
+      placeholder: 'search'
+    });
   }
 
   addUser(event) {
@@ -63,22 +71,22 @@ export class UserComponent extends BaseList implements OnInit {
 
   prepareColumnDef() {
     this.columnDef = [
-      {headerName: this.translate.instant('COMMON.LABEL.SR_NO'), field: 'sr_no',  minWidth: 80, pinned: 'left'},
+      {headerName: this.translate.instant('COMMON.LABEL.SR_NO'), field: 'sr_no', minWidth: 80, pinned: 'left'},
       {headerName: this.translate.instant('ADMIN.USER.LABEL.USER_ID'), field: 'user_id', minWidth: 120, pinned: 'left'},
       {headerName: this.translate.instant('ADMIN.USER.LABEL.ROLE'), field: 'role', minWidth: 100},
       {headerName: this.translate.instant('ADMIN.USER.LABEL.BUSINESS_NAME'), field: 'business_name', minWidth: 150},
       {headerName: this.translate.instant('COMMON.LABEL.PHONE'), field: 'phone', minWidth: 150},
       {headerName: this.translate.instant('COMMON.LABEL.EMAIL'), field: 'email', minWidth: 150},
       {
-        headerName: 'Term',
+        headerName: this.translate.instant('ADMIN.USER.LABEL.TERM'),
         field: 'term',
         minWidth: 170,
         cellRenderer: 'dropDownRenderer',
         cellRendererParams: {
           onClick: this.onChangeTerm.bind(this),
           options: [
-            {label: "Monthly", value: 'MONTHLY'},
-            {label: "Yearly", value: 'YEARLY'},
+            {label: this.translate.instant('ADMIN.SUBSCRIPTION.LABEL.MONTHLY'), value: 'MONTHLY'},
+            {label: this.translate.instant('ADMIN.SUBSCRIPTION.LABEL.YEARLY'), value: 'YEARLY'},
           ]
         }
       },
@@ -122,9 +130,9 @@ export class UserComponent extends BaseList implements OnInit {
 
   onViewLogo(params) {
     console.log(params);
-      const data = {
-        logo: params.rowData.logo
-      }
+    const data = {
+      logo: params.rowData.logo
+    }
     this.commonService.openDialog(LogoViewerComponent, {}, data).then((res: any) => {
       if (res) {
         console.log(params);

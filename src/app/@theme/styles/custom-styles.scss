@@ -56,6 +56,11 @@ $cc-input-placeholder-color: rgba(0, 0, 0, 0.5) !default;
 //  background: $secondary !important;
 //}
 
+html, body {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
 a {
   text-decoration: none;
 }
@@ -85,8 +90,8 @@ a {
 }
 
 .manage-user {
-  margin-left: 70px;
-  margin-bottom: 15px;
+  //margin-left: 70px;
+  //margin-bottom: 15px;
 }
 
 #module-container {
@@ -665,4 +670,12 @@ ngx-navbar {
   .header_img img {
     width: 50px;
   }
+}
+
+//LOGIN SCREEN STYLES
+.signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 649px;
 }

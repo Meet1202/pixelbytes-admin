@@ -3,28 +3,25 @@ import {FormGroup} from "@angular/forms";
 import {PBButton} from "../../../../components/form-elements/field-classes/pb-button";
 import {TranslateService} from "@ngx-translate/core";
 import {FormService} from "../../../../services/form-service/form.service";
-import {PBInputText} from "../../../../components/form-elements/field-classes/pb-input-text";
-import {PBSelectBox} from "../../../../components/form-elements/field-classes/pb-select-box";
 import {BaseList} from "../../../../components/form-elements/base-list/base-list";
 import {NotificationService} from "../../../../services/notification-service/notification.service";
 import {PBConfirmPromptComponent} from "../../../../components/form-elements/pb-confirm-prompt/pb-confirm-prompt.component";
 import {CommonService} from "../../../../services/common-service/common.service";
 import {ButtonRendererComponent} from "../../../../components/renderers/button-renderer";
 import {of} from "rxjs";
+import {ManageImageListingComponent} from "../manage-image-listing/manage-image-listing.component";
+import {PBInputText} from "../../../../components/form-elements/field-classes/pb-input-text";
 
 @Component({
   selector: 'ngx-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  templateUrl: './image_listing.component.html',
+  styleUrls: ['./image_listing.component.scss']
 })
-export class MenuComponent extends BaseList implements OnInit {
+export class ImageListingComponent extends BaseList implements OnInit {
 
   myForm: FormGroup;
   addBtnField: PBButton;
-  itemImageField: PBInputText;
-  categoryField: PBSelectBox;
-  subCategoryField: PBSelectBox;
-  logo: any;
+  searchField: PBInputText;
   frameworkComponents: any;
 
   constructor(
@@ -51,9 +48,7 @@ export class MenuComponent extends BaseList implements OnInit {
 
   makeFields() {
     this.makeAddBtnField();
-    this.makeItemImageField();
-    this.makeCategoryField();
-    this.makeSubCategoryField();
+    this.makeSearchField();
   }
 
   makeAddBtnField() {
@@ -64,47 +59,30 @@ export class MenuComponent extends BaseList implements OnInit {
     });
   }
 
-  makeItemImageField() {
-    this.itemImageField = new PBInputText({
-      fieldName: 'item_image',
-      type: 'file',
-      displayLabel: this.translate.instant('ADMIN.HOME.LABEL.UPLOAD_LOGO')
+  makeSearchField() {
+    this.searchField = new PBInputText({
+      fieldName: 'search',
+      placeholder: this.translate.instant('COMMON.LABEL.SEARCH'),
     });
-  }
-
-  makeCategoryField() {
-    this.categoryField = new PBSelectBox({
-      fieldName: 'category',
-      displayLabel: this.translate.instant('ADMIN.CATEGORY.LABEL.SELECT_CATEGORY'),
-      options: [
-        {label: 'Icon', value: 'icon'}
-      ]
-    });
-  }
-
-  makeSubCategoryField() {
-    this.subCategoryField = new PBSelectBox({
-      fieldName: 'sub_category',
-      displayLabel: this.translate.instant('ADMIN.CATEGORY.LABEL.SELECT_SUB_CATEGORY'),
-      options: [
-        {label: 'Test', value: 'test'}
-      ]
-    });
-  }
-
-  chooseLogoFile(event) {
-    if (event.target.files) {
-      const reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
-      reader.onload = (e: any) => {
-        this.logo = e.target.result;
-      }
-    }
   }
 
   getItems() {}
 
-  add(event) {}
+  add(event) {
+    const data = {
+      data: {
+
+      }
+    }
+    this.commonService.openDialog(ManageImageListingComponent, {
+      modalDialogClass: 'p-lg-3'
+    }, data).then((res: any) => {
+      if (res) {
+        console.log(res);
+        // call remove api
+      }
+    });
+  }
 
   prepareColumnDef() {
     this.columnDef = [

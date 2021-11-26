@@ -15,10 +15,22 @@
       "DESCRIPTION": "Description",
       "LOGO": "Logo",
       "PHONE": "Phone",
-      "VIEW": "View"
+      "VIEW": "View",
+      "SAVE": "Save",
+      "CANCEL": "CANCEL",
+      "SEARCH": "Search"
     },
     "MESSAGE": {
       "FIELD_REQUIRED": "This Field is required."
+    }
+  },
+  "AUTH": {
+    "LABEL": {
+      "RESET_PASSWORD": "Reset Password",
+      "SIGN_IN": "Sign in",
+      "RESET": "reset",
+      "PASSWORD": "password",
+      "SHOW_PASSWORD": "Show Password"
     }
   },
   "ADMIN": {
@@ -70,7 +82,8 @@
       "LABEL": {
         "ENQUIRY_LIST": "Enquiry List",
         "PHONE": "Phone",
-        "MESSAGE": "Message"
+        "MESSAGE": "Message",
+        "STATUS": "Status"
       },
       "MESSAGE": {
         "REMOVE_MESSAGE_OF_ENQUIRY": "Are you sure you want to remove Enquiry from this {{EMAIL}} email."
@@ -95,7 +108,9 @@
         "ADDRESS": "Address",
         "TAGLINE": "Tagline",
         "WEBSITE": "Website",
-        "DETAILS": "Details"
+        "DETAILS": "Details",
+        "TERM": "Term",
+        "": ""
       }
     }
   }

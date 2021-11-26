@@ -7,6 +7,7 @@ import {FormControl} from '@angular/forms';
   templateUrl: './pb-input-text.component.html'
 })
 export class PBInputTextComponent extends BaseFormComponent implements OnInit {
+  @Output() blur: EventEmitter<any> = new EventEmitter<any>();
   @Input() displayLink = false;
   @Input() linkUrl = '';
   isLinkLabelVisible: boolean = false;
@@ -37,6 +38,10 @@ export class PBInputTextComponent extends BaseFormComponent implements OnInit {
 
   onBlur(event: any) {
     this.isBlur = true;
+    this.blur.emit({
+      formControl: this.formGroup.controls[this.fieldMeta.fieldName],
+      fieldName: this.fieldMeta.fieldName
+    });
     this.manageLinkVisibility();
     this.prepareLinks();
     this.detectChanges();

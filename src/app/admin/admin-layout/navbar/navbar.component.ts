@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NbMenuService, NbSidebarService, NbThemeService} from "@nebular/theme";
 import {LayoutService} from "../../../@core/utils";
 import {TranslateService} from "@ngx-translate/core";
+import {SharedService} from "../../../../services/shared-service/shared.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'ngx-navbar',
@@ -40,8 +42,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private menuService: NbMenuService,
     private themeService: NbThemeService,
     private layoutService: LayoutService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private sharedService: SharedService,
+    private router: Router
   ) {
+    this.sharedService.productName.subscribe((data: any) => {
+      this.companyName = data;
+    });
   }
 
   ngOnInit(): void {
@@ -67,6 +74,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   navigateHome() {
     this.menuService.navigateHome();
     return false;
+  }
+
+  logout(event) {
+    this.router.navigate(['/admin/signin']);
+    localStorage.removeItem('loggedIn');
   }
 
 }

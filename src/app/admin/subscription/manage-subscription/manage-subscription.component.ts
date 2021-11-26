@@ -56,7 +56,7 @@ export class ManageSubscriptionComponent implements OnInit {
   makeAddEditField() {
     this.addEditField = new PBButton({
       fieldName: 'addEdit',
-      btnText: this.userId ? this.translate.instant('COMMON.LABEL.EDIT') : this.translate.instant('COMMON.LABEL.ADD'),
+      btnText: !this.subscriptionDetails ? this.translate.instant('COMMON.LABEL.EDIT') : this.translate.instant('COMMON.LABEL.ADD'),
       class: 'btn-xs m-t-md'
     });
   }
@@ -92,6 +92,7 @@ export class ManageSubscriptionComponent implements OnInit {
     } else if (event.fieldName == 'description') {
       document.querySelector('.description').innerHTML = event.formControl.value;
     } else if (event.fieldName == 'price') {
+      console.log(event)
       this.price = event.formControl.value;
     }
     this.detectChange();
@@ -110,7 +111,7 @@ export class ManageSubscriptionComponent implements OnInit {
 
   addEdit(event) {
     if (this.userId) {
-      console.log('Edit mode::', this.myForm.value)
+      console.log('Edit mode::', this.myForm.value);
     } else {
       console.log('Add mode::', this.myForm.value);
     }
